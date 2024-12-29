@@ -2,23 +2,21 @@ package pageObjects;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Driver.DriverManager;
 import utils.Photographer;
 
 import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class ContactUs {
+public class ContactUs extends AbstractPageObject {
 
-    private WebDriver driver;
     private Wait wait;
     private Photographer photographer;
 
@@ -40,18 +38,18 @@ public class ContactUs {
     @FindBy(xpath = "//p[@class='alert alert-success']")
     private WebElement successMessage;
 
-    public ContactUs(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        PageFactory.initElements(driver,this);
-        photographer = new Photographer(driver);
+    public ContactUs() {
+        wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(10));
+        photographer = new Photographer();
     }
+
     @Step("Seleccionando combo heading")
     public void writeSubjectHeading(String subject){
         photographer.takePhoto();
         Select selectWeb = new Select(subjectSelectLoc);
         selectWeb.selectByVisibleText(subject);
     }
+
     @Step("Escribiendo email")
     public void writeEmail(String emailIn){
         photographer.takePhoto();

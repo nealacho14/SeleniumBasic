@@ -2,6 +2,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Description;
 import models.ResultModel;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,33 +14,37 @@ import pageObjects.ContactUs;
 import pageObjects.Meli.DetailsPage;
 import pageObjects.Meli.HomePage;
 import pageObjects.Meli.ResultPage;
+import utils.Driver.DriverFactory;
+import utils.Driver.DriverManager;
+import utils.TestResultLoggerExtension;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.concurrent.TimeUnit;
+
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@ExtendWith(TestResultLoggerExtension.class)
 public class NavigationTest {
 
-    private WebDriver driver;
+    private static final String DEFAULT_BROWSER = "chrome";
 
     @BeforeEach
     public void setup(){
-        WebDriverManager.chromedriver().setup();
-        //WebDriverManager.firefoxdriver().setup();
-        driver = new ChromeDriver();
-        //driver = new FirefoxDriver();
+        WebDriver driver = DriverFactory.valueOf(DEFAULT_BROWSER.toUpperCase()).createDriver();
+        DriverManager.setDriver(driver);
+        DriverManager.getDriver().manage().window().maximize();
+        DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
     }
 
     @Test
     @Description("Login to facebook")
     public void navigateToFacebook() throws InterruptedException {
-        driver.get("https://www.facebook.com/");
+        DriverManager.getDriver().get("https://www.facebook.com/");
 
-        driver.findElement(By.cssSelector("input#email")).sendKeys("nealachito");
-        driver.findElement(By.cssSelector("input#pass")).sendKeys("Jesusdavid20*");
-        driver.findElement(By.cssSelector("button[name='login']")).click();
+        DriverManager.getDriver().findElement(By.cssSelector("input#email")).sendKeys("nealachito");
+        DriverManager.getDriver().findElement(By.cssSelector("input#pass")).sendKeys("Jesusdavid20*");
+        DriverManager.getDriver().findElement(By.cssSelector("button[name='login']")).click();
 
         Thread.sleep(10000);
     }
@@ -47,11 +52,11 @@ public class NavigationTest {
     @Test
     @Description("navigate to mercado libre colombia")
     public void navigateToMeli(){
-        driver.get("https://www.mercadolibre.com/");
+        DriverManager.getDriver().get("https://www.mercadolibre.com/");
 
-        driver.findElement(By.xpath("//nav/ul/li[contains(.,\"Colombia\")]")).click();
+        DriverManager.getDriver().findElement(By.xpath("//nav/ul/li[contains(.,\"Colombia\")]")).click();
 
-        String currentUrl = driver.getCurrentUrl();
+        String currentUrl = DriverManager.getDriver().getCurrentUrl();
 
         assertTrue(currentUrl.contains(".com.co"));
 
@@ -61,9 +66,9 @@ public class NavigationTest {
     @Disabled
     public void workingWithSelects() throws InterruptedException {
 
-        driver.get("http://www.automationpractice.pl/index.php?id_category=3&controller=category");
+        DriverManager.getDriver().get("http://www.automationpractice.pl/index.php?id_category=3&controller=category");
 
-        WebElement mainSelect = driver.findElement(By.cssSelector("select#selectProductSort"));
+        WebElement mainSelect = DriverManager.getDriver().findElement(By.cssSelector("select#selectProductSort"));
 
         Select selectWeb = new Select(mainSelect);
 
@@ -71,7 +76,7 @@ public class NavigationTest {
 
         Thread.sleep(2000);
 
-        mainSelect = driver.findElement(By.cssSelector("select#selectProductSort"));
+        mainSelect = DriverManager.getDriver().findElement(By.cssSelector("select#selectProductSort"));
 
         selectWeb = new Select(mainSelect);
 
@@ -79,7 +84,7 @@ public class NavigationTest {
 
         Thread.sleep(2000);
 
-        mainSelect = driver.findElement(By.cssSelector("select#selectProductSort"));
+        mainSelect = DriverManager.getDriver().findElement(By.cssSelector("select#selectProductSort"));
 
         selectWeb = new Select(mainSelect);
 
@@ -87,7 +92,7 @@ public class NavigationTest {
 
         Thread.sleep(2000);
 
-        mainSelect = driver.findElement(By.cssSelector("select#selectProductSort"));
+        mainSelect = DriverManager.getDriver().findElement(By.cssSelector("select#selectProductSort"));
 
         selectWeb = new Select(mainSelect);
 
@@ -100,13 +105,13 @@ public class NavigationTest {
     @Test
     @Disabled
     public void implicitWaitExample(){
-        driver.get("https://www.google.com/");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
+        DriverManager.getDriver().get("https://www.google.com/");
+        DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(12));
 
         Instant start = Instant.now();
 
         try {
-            driver.findElement(By.id("NoHayNah"));
+            DriverManager.getDriver().findElement(By.id("NoHayNah"));
         }catch (Exception exception){
             Instant end = Instant.now();
             Duration timeElapsed = Duration.between(start,end);
@@ -119,13 +124,13 @@ public class NavigationTest {
     @Test
     @Disabled
     public void explicitWaitExample(){
-        driver.get("https://www.google.com/");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        DriverManager.getDriver().get("https://www.google.com/");
+        DriverManager.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
         Instant start = Instant.now();
 
         try {
-            driver.findElement(By.id("NoHayNah"));
+            DriverManager.getDriver().findElement(By.id("NoHayNah"));
         }catch (Exception exception){
             Instant end = Instant.now();
             Duration timeElapsed = Duration.between(start,end);
@@ -135,7 +140,7 @@ public class NavigationTest {
         }
 
         Instant startExp = Instant.now();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
+        WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(7));
 
         try {
             wait.until(ExpectedConditions.presenceOfElementLocated(By.id("TampocoExiste")));
@@ -148,7 +153,7 @@ public class NavigationTest {
         }
 
         Instant startExp2 = Instant.now();
-        WebDriverWait wait2 = new WebDriverWait(driver, Duration.ofSeconds(12));
+        WebDriverWait wait2 = new WebDriverWait(DriverManager.getDriver(), Duration.ofSeconds(12));
 
         try {
             wait2.until(ExpectedConditions.presenceOfElementLocated(By.id("hplogo")));
@@ -166,9 +171,9 @@ public class NavigationTest {
     @Test
     @Description("fill to form automation practice")
     public void practicedTest(){
-        driver.get("http://www.automationpractice.pl/index.php?controller=contact");
+        DriverManager.getDriver().get("http://www.automationpractice.pl/index.php?controller=contact");
 
-        ContactUs contactUs = new ContactUs(driver);
+        ContactUs contactUs = new ContactUs();
         contactUs.writeSubjectHeading("Webmaster");
         contactUs.writeEmail("nealdop14@gmail.com");
         contactUs.writeOrdenEmitida("Orden Emitida");
@@ -179,21 +184,20 @@ public class NavigationTest {
 
     @Test
     @Description("searching in meli laptop ryzen 9")
-    public void getElementTest() throws InterruptedException {
-        driver.get("https://www.mercadolibre.com.do/#from=homecom");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
+    public void getElementTest(){
+        DriverManager.getDriver().get("https://www.mercadolibre.com.do/#from=homecom");
 
-        HomePage homePage = new HomePage(driver);
+
+        HomePage homePage = new HomePage();
 
         homePage.writeSearcher("laptop ryzen 9");
         homePage.search();
 
-        ResultPage resultPage = new ResultPage(driver);
+        ResultPage resultPage = new ResultPage();
 
         ResultModel expectedResultModel = resultPage.clickOnRandomItem();
 
-        DetailsPage detailsPage = new DetailsPage(driver);
+        DetailsPage detailsPage = new DetailsPage();
         ResultModel actualResultModel = detailsPage.getDetailInformation();
 
         Assertions.assertAll(
@@ -204,31 +208,24 @@ public class NavigationTest {
 
     @Test
     @Description("searching in meli iphone 13")
-    public void getElementTest2() throws InterruptedException {
-        driver.get("https://www.mercadolibre.com.do/#from=homecom");
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10L, TimeUnit.SECONDS);
+    public void getElementTest2(){
+        DriverManager.getDriver().get("https://www.mercadolibre.com.do/#from=homecom");
 
-        HomePage homePage = new HomePage(driver);
+        HomePage homePage = new HomePage();
 
         homePage.writeSearcher("Iphone 13");
         homePage.search();
 
-        ResultPage resultPage = new ResultPage(driver);
+        ResultPage resultPage = new ResultPage();
 
         ResultModel expectedResultModel = resultPage.clickOnRandomItem();
 
-        DetailsPage detailsPage = new DetailsPage(driver);
+        DetailsPage detailsPage = new DetailsPage();
         ResultModel actualResultModel = detailsPage.getDetailInformation();
 
         Assertions.assertAll(
                 ()->Assertions.assertEquals(expectedResultModel.getPrice(),actualResultModel.getPrice()),
                 ()->Assertions.assertEquals(expectedResultModel.getName(),actualResultModel.getName())
         );
-    }
-
-    @AfterEach
-    public void tearDown(){
-        driver.quit();
     }
 }

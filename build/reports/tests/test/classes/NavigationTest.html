@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">8</div>
+<div class="counter">1</div>
 <p>tests</p>
 </div>
 </td>
@@ -35,13 +35,13 @@
 </td>
 <td>
 <div class="infoBox" id="ignored">
-<div class="counter">3</div>
+<div class="counter">0</div>
 <p>ignored</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">50.955s</div>
+<div class="counter">11.106s</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox failures" id="successRate">
-<div class="percent">80%</div>
+<div class="percent">0%</div>
 <p>successful</p>
 </div>
 </td>
@@ -82,7 +82,7 @@
 	at app//org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:44)
 	at app//org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:38)
 	at app//org.junit.jupiter.api.Assertions.assertAll(Assertions.java:2911)
-	at app//NavigationTest.getElementTest(NavigationTest.java:199)
+	at app//NavigationTest.getElementTest(NavigationTest.java:203)
 	at java.base@17.0.12/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base@17.0.12/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base@17.0.12/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -149,10 +149,11 @@
 	at app//org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:114)
 	at app//org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:86)
 	at app//org.junit.platform.launcher.core.DefaultLauncherSession$DelegatingLauncher.execute(DefaultLauncherSession.java:86)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:124)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:99)
-	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:94)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:63)
+	at app//org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:53)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.processAllTestClasses(JUnitPlatformTestClassProcessor.java:99)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor$CollectAllTestClassesExecutor.access$000(JUnitPlatformTestClassProcessor.java:79)
+	at org.gradle.api.internal.tasks.testing.junitplatform.JUnitPlatformTestClassProcessor.stop(JUnitPlatformTestClassProcessor.java:75)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.stop(SuiteTestClassProcessor.java:61)
 	at java.base@17.0.12/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base@17.0.12/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base@17.0.12/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -160,14 +161,14 @@
 	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
 	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
 	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:92)
-	at jdk.proxy1/jdk.proxy1.$Proxy4.stop(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:200)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:132)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:103)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:63)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at jdk.proxy1/jdk.proxy1.$Proxy2.stop(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker$3.run(TestWorker.java:193)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
 	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:121)
+	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:133)
 	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:71)
 	at app//worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
 	at app//worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
@@ -177,7 +178,7 @@
 		at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
 		at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
 		at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1141)
-		at app//NavigationTest.lambda$getElementTest$1(NavigationTest.java:201)
+		at app//NavigationTest.lambda$getElementTest$1(NavigationTest.java:205)
 		at app//org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
 		at java.base@17.0.12/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
 		at java.base@17.0.12/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
@@ -187,14 +188,14 @@
 		at java.base@17.0.12/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
 		at java.base@17.0.12/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
 		at app//org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
-		... 92 more
+		... 93 more
 Caused by: org.opentest4j.AssertionFailedError: expected: &lt;Laptop Hp Chromebook, 11.5 Pulgadas, Exelente Condiciones.&gt; but was: &lt;Laptop Hp Chromebook, 11.5 Pulgadas, Exelente Condiciones. (Usado)&gt;
 	at app//org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
 	at app//org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
 	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
 	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
 	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1141)
-	at app//NavigationTest.lambda$getElementTest$1(NavigationTest.java:201)
+	at app//NavigationTest.lambda$getElementTest$1(NavigationTest.java:205)
 	at app//org.junit.jupiter.api.AssertAll.lambda$assertAll$0(AssertAll.java:68)
 	at java.base@17.0.12/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
 	at java.base@17.0.12/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
@@ -204,7 +205,7 @@ Caused by: org.opentest4j.AssertionFailedError: expected: &lt;Laptop Hp Chromebo
 	at java.base@17.0.12/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
 	at java.base@17.0.12/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
 	at app//org.junit.jupiter.api.AssertAll.assertAll(AssertAll.java:77)
-	... 92 more
+	... 93 more
 </pre>
 </span>
 </div>
@@ -220,44 +221,9 @@ Caused by: org.opentest4j.AssertionFailedError: expected: &lt;Laptop Hp Chromebo
 </tr>
 </thead>
 <tr>
-<td class="skipped">explicitWaitExample()</td>
-<td class="skipped">-</td>
-<td class="skipped">ignored</td>
-</tr>
-<tr>
 <td class="failures">getElementTest()</td>
-<td class="failures">8.525s</td>
+<td class="failures">11.106s</td>
 <td class="failures">failed</td>
-</tr>
-<tr>
-<td class="success">getElementTest2()</td>
-<td class="success">6.220s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="skipped">implicitWaitExample()</td>
-<td class="skipped">-</td>
-<td class="skipped">ignored</td>
-</tr>
-<tr>
-<td class="success">navigateToFacebook()</td>
-<td class="success">13.779s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">navigateToMeli()</td>
-<td class="success">4.629s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">practicedTest()</td>
-<td class="success">17.800s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="skipped">workingWithSelects()</td>
-<td class="skipped">-</td>
-<td class="skipped">ignored</td>
 </tr>
 </table>
 </div>
@@ -266,8 +232,6 @@ Caused by: org.opentest4j.AssertionFailedError: expected: &lt;Laptop Hp Chromebo
 <span class="code">
 <pre>Laptop Hp Chromebook, 11.5 Pulgadas, Exelente Condiciones.
 11,000
-iPhone 13 Nuevo De Caja 35,000
-35,000
 </pre>
 </span>
 </div>
@@ -279,7 +243,7 @@ iPhone 13 Nuevo De Caja 35,000
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.12</a> at 28/12/2024, 12:01:38 p. m.</p>
+<a href="http://www.gradle.org">Gradle 7.2</a> at 29/12/2024, 1:08:30 a. m.</p>
 </div>
 </div>
 </body>

@@ -6,14 +6,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import pageObjects.AbstractPageObject;
 
-public class HomePage {
+public class HomePage extends AbstractPageObject {
 
     @FindBy(id="cb1-edit")
     private WebElement searchbox;
 
-    public HomePage(WebDriver driver) {
-        PageFactory.initElements(driver,this);
+    public HomePage() {
     }
 
     public void writeSearcher(String busqueda){

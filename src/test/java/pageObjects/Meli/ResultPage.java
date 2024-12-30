@@ -6,14 +6,13 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import pageObjects.AbstractPageObject;
+import utils.Driver.DriverManager;
 
 import java.util.List;
 import java.util.Random;
 
-public class ResultPage {
-
-    private WebDriver driver;
+public class ResultPage extends AbstractPageObject {
 
     @FindBy(css = "ol[class*='ui-search-layout'] li" )
     private List<WebElement> elementos;
@@ -23,9 +22,8 @@ public class ResultPage {
     private By title = By.cssSelector("h2 a");
 
 
-    public ResultPage(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver,this);
+    public ResultPage() {
+
     }
 
     public WebElement getRandomResults(){
@@ -41,7 +39,7 @@ public class ResultPage {
         expectedResultModel.setName(randomElement.findElement(title).getText());
         expectedResultModel.setPrice(randomElement.findElement(price).getText());
 
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        JavascriptExecutor executor = (JavascriptExecutor) DriverManager.getDriver();
         executor.executeScript("arguments[0].scrollIntoView();", randomElement);
         System.out.println(randomElement.findElement(title).getText());
         System.out.println(randomElement.findElement(price).getText());

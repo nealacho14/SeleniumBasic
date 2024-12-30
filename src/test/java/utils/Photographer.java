@@ -4,18 +4,16 @@ import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import utils.Driver.DriverManager;
 
 public class Photographer {
 
-    private WebDriver driver;
-
-    public Photographer(WebDriver driver) {
-        this.driver = driver;
+    public Photographer() {
     }
 
     @Attachment(value = "Screenshot", type = "image/png")
     public byte[] takePhoto(){
-        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+        return ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
 
     }
 }
